@@ -10,6 +10,7 @@ namespace CoffeeShopApp.Controllers
     {
         public ActionResult Index()
         {
+
             return View();
         }
 
