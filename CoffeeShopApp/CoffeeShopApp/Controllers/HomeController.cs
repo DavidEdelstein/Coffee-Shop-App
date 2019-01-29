@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CoffeeShopApp.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -13,6 +14,24 @@ namespace CoffeeShopApp.Controllers
 
             return View();
         }
+
+        public ActionResult Register()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Register(NewUser newUser )
+        {
+            return View("AddUser", newUser);
+        }
+
+        //public ActionResult AddUser()
+        //{
+        //    return View();
+        //}
+
+        
 
         public ActionResult About()
         {
