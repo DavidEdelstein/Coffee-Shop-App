@@ -1,4 +1,5 @@
-﻿using CoffeeShopApp.Models;
+﻿using CoffeeShopApp.DALdata;
+using CoffeeShopApp.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +10,8 @@ namespace CoffeeShopApp.Controllers
 {
     public class HomeController : Controller
     {
+        private CoffeeShopContext db = new CoffeeShopContext();
+
         public ActionResult Index()
         {
 
@@ -23,13 +26,16 @@ namespace CoffeeShopApp.Controllers
         [HttpPost]
         public ActionResult Register(NewUser newUser )
         {
+            if (ModelState.IsValid)
+            {
+                db.NewUsers.Add(newUser);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
             return View("AddUser", newUser);
         }
 
-        //public ActionResult AddUser()
-        //{
-        //    return View();
-        //}
+       
 
         
 
